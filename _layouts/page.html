@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<article class="page">
+
+    <header class="page-header">
+        <div class="page-title">
+            {{ page.title | escape }}
+        </div>
+        {% if page.date %}
+            <time datetime="{{ page.date | date_to_xmlschema }}">
+                {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
+                {{ page.date | date: date_format }}
+            </time>
+        {% endif %}
+        {% for category in page.categories %}
+            <a class="page-category" href="#">{{ category | escape }}</a>
+        {% endfor %}
+    </header>
+
+    {% if page.icon %}
+        <div class="page-logo">
+            <img src="{{ page.icon | prepend:"/assets/" | relative_url }}" alt="The page logo">
+        </div>
+    {% endif %}
+
+    {% unless page.content == '' %}
+        <div class="page-content">
+            {{ content }}
+        </div>
+    {% endunless %}
+
+</article>

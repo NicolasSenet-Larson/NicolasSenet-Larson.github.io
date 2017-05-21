@@ -1,17 +1,59 @@
-title: Your awesome title
-email: your-email@domain.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+# Site settings
+title: Nicolas Senet-Larson
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "https://NicolasSenet-Larson.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+icon: icon.svg
+description: >
+    Developer - Engineer - Designer
+
+# Date
+date_format: "%B %Y"
+
+# Homepage
+logo: logo.svg
+catchphrase: Developer - Engineer - Designer
+about:
+    picture: about.jpg
+    content: >
+        I am a Computer Science graduate from King's College London.
+        <br><br>
+        I love designing, programming and building cool things.
+
+# Networking
+social:
+    -
+        title:  RSS
+        icon:   rss.svg
+        url:    /feed.xml
+    -
+        title:  Mail
+        icon:   mail.svg
+        url:    mailto:nico.senetlarson@btinternet.com
+    -
+        title:  Github
+        icon:   github.svg
+        url:    https://github.com/NicolasSenet-Larson
+    -
+        title:  Linkedin
+        icon:   linkedin.svg
+        url:    https://www.linkedin.com/in/nicolas-senet-larson
+    -
+        title:  Facebook
+        url:
+        icon:   facebook.svg
+    -
+        title:  Deviantart
+        url:
+        icon:   deviantart.svg
+
+# Footer note
+notice: Copyright © 2017 <a href="https://NicolasSenet-Larson.github.io">Nicolas Senet-Larson</a>.
+    All rights reserved.
+    Powered by <a href="https://jekyllrb.com/">Jekyll</a>.
 
 # Build settings
 markdown: kramdown
-theme: minima
+permalink: /:categories/:title/
 gems:
   - jekyll-feed
 exclude:

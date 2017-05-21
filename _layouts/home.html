@@ -1,0 +1,56 @@
+---
+layout: default
+---
+<article class="page">
+
+    <!-- Logo -->
+    {% if site.logo %}
+        <img class="page-logo" src="{{ site.logo | prepend:"/assets/" | relative_url }}" alt="The website logo">
+    {% endif %}
+
+    <!-- Catchphrase -->
+    {% if site.catchphrase %}
+        <div class="home-content" id="catchphrase">
+            <h2 style="border: none; padding: 0;">{{ site.catchphrase }}</h2>
+        </div>
+    {% endif %}
+
+    <!-- Posts list -->
+    {% if site.posts %}
+        <div class="post-list">
+            {% for post in site.posts %}
+                <div class="post">
+                    <a class="post-wrapper" href="{{ post.url | relative_url }}" tooltip="{{ post.title }}">
+                        {% if post.icon %}
+                            <div class="post-logo">
+                                <img src="{{ post.icon | prepend:"/assets/" | relative_url }}" alt="Icon for the post: {{ post.title }}">
+                            </div>
+                        {% endif %}
+                        <div class="post-title">
+                            <span></span>
+                            <div>{{ post.title }}</div>
+                        </div>
+                    </a>
+                    <span class="post-category" style="margin: 0; cursor: default;">&nbsp;</span>
+                    {% for category in post.categories %}
+                        <a class="post-category" href="#">{{ category }}</a>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- About -->
+    {% if site.about %}
+        <div class="home-content" id="about">
+            {% if site.about.picture %}
+                <div class="about-picture">
+                    <img src="{{ site.about.picture | prepend:"/assets/" | relative_url }}" alt="Picture for the about section">
+                </div>
+            {% endif %}
+            <h2 style="border: none;">About</h2>
+            <p>{{ site.about.content }}</p>
+        </div>
+    {% endif %}
+
+</article>

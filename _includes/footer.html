@@ -1,0 +1,19 @@
+<footer>
+    <div class="wrapper">
+
+        <div class="footer-right">
+            {% for network in site.social %}
+                {% if network.url and (network.icon or network.title) %}
+                    <a class="network-link" href="{{ network.url }}">
+                        <img class="network-icon" src="{{ network.icon | prepend:"/assets/" | relative_url }}" alt="{{ network.title }}">
+                    </a>
+                {% endif  %}
+            {% endfor %}
+        </div>
+
+        <div class="footer-left">
+            {{ page.notice | default: site.notice }}
+        </div>
+
+    </div>
+</footer>
