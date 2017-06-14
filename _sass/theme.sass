@@ -3,10 +3,10 @@
 // Variables
 
 $content-width: 1200px !default
-$on-palm: 600px !default
-$page-logo-width: 300px
+$on-palm: 768px !default
+$page-logo-width: 360px
 $header-logo-width: 36px
-$post-logo-width: 100px
+$post-logo-width: 120px
 $spacing: 20px
 $border-radius: 4px
 
@@ -53,31 +53,10 @@ $title-shadow: 0 0 1px rgba(0,0,0,1)
 
 // Animations
 
-@keyframes max-width
-    0%
-        max-width: 0
-    25%
-        max-width: 0
-    50%
-        max-width: $spacing
-    100%
-        max-width: $content-width
-
-@keyframes box-shadow
-    0%
-        box-shadow: inset $box-shadow black
-        background-color: $blue
-    50%
-        box-shadow: inset $box-shadow black
-        background-color: $blue
-    100%
-        box-shadow: none
-        background-color: white
-
 @keyframes display
-    0%
+    from
         opacity: 0
-    100%
+    to
         opacity: 1
 
 // Common elements
@@ -96,6 +75,7 @@ a:hover, a:focus
     border-radius: $border-radius
     background-color: darken($background-color, 0)
     box-shadow: $box-shadow
+    animation: display 0.5s linear
 
 .button:hover, .button:active, .button:focus
     color: $header-color
@@ -118,11 +98,11 @@ html
 
 body
     max-width: $content-width - $spacing
-    width: calc(100% - #{$spacing})
+    width: 100%
     min-height: 100%
     margin: auto
+    padding: 0 $spacing/2
     position: relative
-    animation: display 0.2s linear
 
     // Site header
 
@@ -222,8 +202,9 @@ body
                 margin: 0 $spacing/2
 
             .page-logo
-                margin: $spacing*2 calc(50% - #{$page-logo-width}/2)
-                width: $page-logo-width
+                margin: $spacing*2 auto
+                width: 100%
+                max-width: $page-logo-width
                 height: $page-logo-width
                 line-height: $page-logo-width
                 overflow: hidden
@@ -231,7 +212,7 @@ body
                 background-color: transparentize($header-color, 0.9)
 
                 img
-                    max-width: 100%
+                    width: 100%
                     min-height: 100%
 
         // Page content
@@ -243,6 +224,7 @@ body
             box-shadow: $box-shadow
             background-color: $background-color
             border-radius: $border-radius
+            animation: display 0.5s linear
 
             h1, h2, h3, h4
                 color: $header-color
