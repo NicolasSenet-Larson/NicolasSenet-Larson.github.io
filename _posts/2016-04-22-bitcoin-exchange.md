@@ -2,15 +2,15 @@
 layout: page
 title: Bitcoin Exchange
 categories: Java MySql
-icon: bitcoin.svg
+logo: bitcoin.svg
 ---
 ## 7CCS4PRJ: MSci Individual Project, 2015-2016
 
-**Supervisor: Dr Steve Phelps**
+### Supervisor: Dr Steve Phelps
 
-**Student: Nicolas Senet-Larson**
+#### Student: Nicolas Senet-Larson
 
-# [SP3] Bit-coin electronic currency exchange
+## [SP3] Bit-coin electronic currency exchange
 
 Bit-coin is an increasingly popular peer-to-peer electronic currency,
 which obviates the need for financial intermediaries such as banks.

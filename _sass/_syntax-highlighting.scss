@@ -1,17 +1,18 @@
 // Syntax highlighting styles for code snippets
 
 .highlight, .highlighter-rouge {
-    background-color: rgb(246, 248, 250);
+    background-color: transparentize($header-color, 0.9);
     border-radius: $border-radius;
     padding: 10px;
     margin: 0;
     line-height: 1.5em;
     overflow: auto;
+    text-shadow: none;
 }
 
 code.highlighter-rouge {
     padding: 1px 3px;
-    background-color: rgba(27, 31, 35, 0.05);
+    background-color: transparentize($header-color, 0.9);
     border-radius: 3px;
 }
 

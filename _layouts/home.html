@@ -1,48 +1,60 @@
 ---
 layout: default
 ---
-<article class="page">
+<article class="page" id="home">
 
-    <!-- Logo -->
-    {% if site.logo %}
-        <img class="page-logo" src="{{ site.logo | prepend:"/assets/" | relative_url }}" alt="The website logo">
-    {% endif %}
+    <header class="page-header">
+        <!-- Title -->
+        <div class="page-title">{{ site.title | replace:" ","<br>" }}</div>
 
-    <!-- Catchphrase -->
-    {% if site.catchphrase %}
-        <div class="home-content" id="catchphrase">
-            <h2 style="border: none; padding: 0;">{{ site.catchphrase }}</h2>
-        </div>
-    {% endif %}
+        <!-- Catchphrase -->
+        {% if site.catchphrase %}
+            <span class="page-category">{{ site.catchphrase }}</span>
+        {% endif %}
+
+        <!-- Logo -->
+        {% if site.logo or page.logo %}
+            <div class="page-logo">
+                <img src="{{ page.logo | default: site.logo | prepend:"/assets/" | relative_url }}" alt="The website logo">
+            </div>
+        {% endif %}
+    </header>
 
     <!-- Posts list -->
     {% if site.posts %}
-        <div class="post-list">
-            {% for post in site.posts %}
-                <div class="post">
-                    <a class="post-wrapper" href="{{ post.url | relative_url }}" tooltip="{{ post.title }}">
-                        {% if post.icon %}
-                            <div class="post-logo">
-                                <img src="{{ post.icon | prepend:"/assets/" | relative_url }}" alt="Icon for the post: {{ post.title }}">
-                            </div>
-                        {% endif %}
-                        <div class="post-title">
-                            <span></span>
-                            <div>{{ post.title }}</div>
-                        </div>
-                    </a>
-                    <span class="post-category" style="margin: 0; cursor: default;">&nbsp;</span>
+        {% for post in site.posts %}
+            <a class="post button" href="{{ post.url | relative_url }}">
+                <!-- Post logo -->
+                <div class="post-logo">
+                    {% if post.logo %}
+                        <img src="{{ post.logo | prepend:"/assets/" | relative_url }}" alt="Post logo">
+                    {% endif %}
+                </div>
+
+                <div class="wrap">
+                    <!-- Post title -->
+                    <div class="post-title">{{ post.title }}</div>
+
+                    <!-- Date -->
+                    {% if post.date %}
+                        <time datetime="{{ post.date | date_to_xmlschema }}">
+                            {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
+                            {{ post.date | date: date_format }}
+                        </time>
+                    {% endif %}
+
+                    <!-- Post categories -->
                     {% for category in post.categories %}
-                        <a class="post-category" href="#">{{ category }}</a>
+                        <div class="post-category">{{ category }}</div>
                     {% endfor %}
                 </div>
-            {% endfor %}
-        </div>
+            </a>
+        {% endfor %}
     {% endif %}
 
     <!-- About -->
     {% if site.about %}
-        <div class="home-content" id="about">
+        <div class="page-content" id="about">
             {% if site.about.picture %}
                 <div class="about-picture">
                     <img src="{{ site.about.picture | prepend:"/assets/" | relative_url }}" alt="Picture for the about section">

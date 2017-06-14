@@ -2,7 +2,7 @@
 title: Nicolas Senet-Larson
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://NicolasSenet-Larson.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-icon: icon.svg
+favicon: arngrim-favicon.svg
 description: >
     Developer - Engineer - Designer
 
@@ -10,14 +10,8 @@ description: >
 date_format: "%B %Y"
 
 # Homepage
-logo: logo.svg
+logo: arngrim-circle.svg
 catchphrase: Developer - Engineer - Designer
-about:
-    picture: about.jpg
-    content: >
-        I am a Computer Science graduate from King's College London.
-        <br><br>
-        I love designing, programming and building cool things.
 
 # Networking
 social:
@@ -26,7 +20,7 @@ social:
         icon:   rss.svg
         url:    /feed.xml
     -
-        title:  Mail
+        title:  Email
         icon:   mail.svg
         url:    mailto:nico.senetlarson@btinternet.com
     -
@@ -39,17 +33,17 @@ social:
         url:    https://www.linkedin.com/in/nicolas-senet-larson
     -
         title:  Facebook
-        url:
         icon:   facebook.svg
+        url:
     -
         title:  Deviantart
-        url:
         icon:   deviantart.svg
+        url:
 
 # Footer note
 notice: Copyright © 2017 <a href="https://NicolasSenet-Larson.github.io">Nicolas Senet-Larson</a>.
-    All rights reserved.
     Powered by <a href="https://jekyllrb.com/">Jekyll</a>.
+    Icons by <a href="https://numixproject.org/">Numix</a>.
 
 # Build settings
 markdown: kramdown

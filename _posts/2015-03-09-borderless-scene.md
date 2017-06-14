@@ -2,9 +2,9 @@
 layout: page
 title: BorderlessScene
 categories: Java
-icon: java.svg
+logo: java.svg
 ---
-# BorderlessScene
+## BorderlessScene
 
 Undecorated JavaFX Scene with implemented move, resize, minimise, maximise, close and Windows Aero Snap controls.
 

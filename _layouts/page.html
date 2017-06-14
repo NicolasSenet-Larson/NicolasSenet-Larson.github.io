@@ -1,33 +1,38 @@
 ---
 layout: default
 ---
-<article class="page">
-
+<article class="page" id="{{ page.id }}">
     <header class="page-header">
+        <!-- Title -->
         <div class="page-title">
             {{ page.title | escape }}
         </div>
+
+        <!-- Date -->
         {% if page.date %}
             <time datetime="{{ page.date | date_to_xmlschema }}">
                 {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
                 {{ page.date | date: date_format }}
             </time>
         {% endif %}
+
+        <!-- Categories -->
         {% for category in page.categories %}
-            <a class="page-category" href="#">{{ category | escape }}</a>
+            <span class="page-category">{{ category | escape }}</span>
         {% endfor %}
+
+        <!-- Logo -->
+        {% if page.logo %}
+            <div class="page-logo">
+                <img src="{{ page.logo | prepend:"/assets/" | relative_url }}" alt="The page logo">
+            </div>
+        {% endif %}
     </header>
 
-    {% if page.icon %}
-        <div class="page-logo">
-            <img src="{{ page.icon | prepend:"/assets/" | relative_url }}" alt="The page logo">
-        </div>
-    {% endif %}
-
+    <!-- Content -->
     {% unless page.content == '' %}
         <div class="page-content">
             {{ content }}
         </div>
     {% endunless %}
-
 </article>

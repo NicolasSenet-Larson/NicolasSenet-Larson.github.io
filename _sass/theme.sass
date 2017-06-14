@@ -2,92 +2,146 @@
 
 // Variables
 
-$site-background: url(background.png)
-$content-width: 1000px
+$content-width: 1200px !default
+$on-palm: 600px !default
+$page-logo-width: 300px
+$header-logo-width: 36px
+$post-logo-width: 100px
+$spacing: 20px
+$border-radius: 4px
+
+$grey-light: darkgrey
+$grey: #393F3F
+$grey-dark: #2E3436
+$gold: #D4AF37
+$black: #1a1a1a
+$blue: #24425C
+
 $base-font-family: Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif !default
-$base-color: white
-$link-color: #d4af37
-$header-color: lightgrey
-$border: 1px solid black
-$border-radius: 5px
-$button-color: darken(steelblue, 15)
-$content-background: rgba(0, 0, 0, 0.2)
-$post-icon-size: 128px
-$vertical-space: 60px
+$base-color: #3D3D3D
+$header-color: #2D2D2D
+$link-color: steelblue
+$background-color: white
+
+$site-background: #2E3436 url(noise-texture.png) center fixed
+$site-background-size: auto
+
+$box-shadow: 0 0 0 1px rgba(0,0,0,0.2), inset 0 -#{$border-radius} rgba(0,0,0,0.2)
+$active-box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2), inset 0 #{$border-radius} rgba(0,0,0,0.2)
+$text-shadow: 1px 1px rgba(0,0,0,0.1)
+$title-shadow: 0 0 1px rgba(0,0,0,1)
 
 // Fonts
+
+@font-face
+    font-family: 'Barbarian'
+    src: url(Barbarian.ttf)
 
 @font-face
     font-family: 'Barbarian NS'
     src: url(Barbarian-NS.ttf)
 
+@font-face
+    font-family: 'Knights Quest Shielded'
+    src: url(Knights-Quest-Shielded.ttf)
+
+// Media queries
+
+@mixin media-query($device)
+    @media screen and (max-width: $device)
+        @content
+
+// Animations
+
+@keyframes max-width
+    0%
+        max-width: 0
+    25%
+        max-width: 0
+    50%
+        max-width: $spacing
+    100%
+        max-width: $content-width
+
+@keyframes box-shadow
+    0%
+        box-shadow: inset $box-shadow black
+        background-color: $blue
+    50%
+        box-shadow: inset $box-shadow black
+        background-color: $blue
+    100%
+        box-shadow: none
+        background-color: white
+
+@keyframes display
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
 // Common elements
 
 a
-    text-decoration: none
     color: $link-color
+    text-decoration: none
+    font-weight: bold
 
-a:hover
+a:hover, a:focus
     text-decoration: underline
+    outline: none
 
-img
+.button
+    color: $base-color
     border-radius: $border-radius
-    max-width: 100%
+    background-color: darken($background-color, 0)
+    box-shadow: $box-shadow
 
-// Site width
+.button:hover, .button:active, .button:focus
+    color: $header-color
+    background-color: darken($background-color, 20)
+    text-decoration: none
 
-.wrapper
-    max-width: $content-width
-    height: 100%
-    margin: 0 auto
-    padding: 0 20px
-    position: relative
+.button:active
+    background-color: darken($background-color, 30)
+    box-shadow: $active-box-shadow
 
 // Background
 
-body
-    background: $site-background
+html
     font-family: $base-font-family
-    margin: 0
-    padding: 0
+    height: 100%
+    text-align: center
     color: $base-color
+    background: $site-background
+    background-size: $site-background-size
+
+body
+    max-width: $content-width - $spacing
+    width: calc(100% - #{$spacing})
+    min-height: 100%
+    margin: auto
+    position: relative
+    animation: display 0.2s linear
 
     // Site header
 
     .site-header
-        background: $site-background
         position: fixed
         top: 0
         left: 0
-        width: 100%
+        right: 0
         z-index: 10
-        border-bottom: $border
-        box-shadow: 0 5px rgba(0, 0, 0, 0.2)
-
-        .site-title
-            font-family: 'Barbarian NS', $base-font-family
-            font-size: 40px
-            line-height: 60px
-            color: $header-color
-
-        .site-title:hover
-            text-decoration: none
-            color: $link-color
+        padding-bottom: $border-radius
+        background-color: $header-color
+        box-shadow: $box-shadow
 
         .site-nav
-            position: absolute
-            top: 11px
-            right: 0
-            margin: 0 11px
-            border: $border
-            border-radius: $border-radius
-            background-color: $button-color
-
             .nav-trigger
                 display: none
 
             label[for="nav-trigger"]
-                display: block
+                display: none
                 float: right
                 width: 36px
                 height: 36px
@@ -103,219 +157,150 @@ body
                 text-align: center
 
                 svg path
-                    fill: lightgrey
-
-            .menu-icon:hover
-                svg path
-                    fill: $base-color
+                    fill: $background-color
 
             input ~ .trigger
                 clear: both
-                display: none
+                display: block
 
             input:checked ~ .trigger
-                display: inline-block
-                padding: 0 10px
+                display: block
 
-            .page-link
-                display: inline-block
-                line-height: 36px
-                margin-right: 16px
-                color: $header-color
+            .page-links
+                float: left
+                width: 50%
 
-            .page-link:hover
+            .socials
+                float: right
+                width: 50%
+
+            .page-link, .social
+                display: inline-block
+                vertical-align: middle
+                min-width: $header-logo-width
+                height: $header-logo-width
+                line-height: $header-logo-width
+                padding: $spacing/2
+                color: $background-color
+
+            .page-link:hover, .page-link:active, .page-link:focus, .social:hover, .social:active, .social:focus
+                background: transparentize($background-color, 0.9)
                 text-decoration: none
-                color: $base-color
 
-    // Page content
+            .page-link:active, .social:active
+                box-shadow: $active-box-shadow
+
+    // Site footer
+
+    footer
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+        padding: $spacing
+        color: $background-color
+
+    // Page
 
     .page
-        margin-top: $vertical-space
-        text-align: center
-        padding-top: $vertical-space
+        padding-top: ($header-logo-width + $spacing + $border-radius + $spacing)*2
+        padding-bottom: $header-logo-width + $spacing + $border-radius + $spacing
+
+        // Page header
 
         .page-header
-            display: inline-block
-            text-align: right
+            font-weight: bold
+            color: $background-color
 
             .page-title
-                font-size: 40px
-                line-height: 60px
-                text-align: center
+                font-size: 2em
+                margin: $spacing 0
 
-            .page-category
-                margin-left: 20px
+            time, .page-category
+                display: inline-block
+                vertical-align: middle
+                margin: 0 $spacing/2
 
-            time
-                float: left
+            .page-logo
+                margin: $spacing*2 calc(50% - #{$page-logo-width}/2)
+                width: $page-logo-width
+                height: $page-logo-width
+                line-height: $page-logo-width
+                overflow: hidden
+                border-radius: 50%
+                background-color: transparentize($header-color, 0.9)
 
-        .page-logo
-            margin: 20px auto
-            width: $post-icon-size * 2
-            height: $post-icon-size * 2
-            display: block
-            border-radius: 50%
-            overflow: hidden
+                img
+                    max-width: 100%
+                    min-height: 100%
 
-            img
-                width: 100%
+        // Page content
 
         .page-content
             text-align: left
-            margin-top: $vertical-space
-            padding: 0 45px
-            background-color: white
-            color: black
-            border: $border
+            margin: $spacing*2 auto
+            padding: $spacing
+            box-shadow: $box-shadow
+            background-color: $background-color
             border-radius: $border-radius
 
-            a
-                color: rgb(3, 102, 214)
-
-            h1, h2, h3, p, ul
-                margin-bottom: 16px
-
-            h1, h1, h3
-                margin-top: 24px
+            h1, h2, h3, h4
+                color: $header-color
 
             h1, h2
-                border-bottom: 1px solid rgb(234, 236, 239)
-                padding-bottom: 10px
-
-            h1
-                font-size: 32px
-                line-height: 40px
-
-            h2
-                font-size: 24px
-                line-height: 30px
-
-            h3
-                font-size: 20px
-                line-height: 25px
+                border-bottom: 1px solid $header-color
+                padding-bottom: $spacing/2
 
             strong em
                 display: block
                 text-align: center
 
             img
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
+
 
             // Syntax highlighting styles for code snippets
             @import "_syntax-highlighting"
 
-        // Home content
+    // Home page
 
-        .home-content
-            text-align: left
-            margin-top: $vertical-space
-            padding: 0 20px
-            background-color: $content-background
-            color: $base-color
-            border: $border
-            border-radius: $border-radius
+    #home
+        .page-header
+            .page-title
+                font-family: 'Knights Quest Shielded', $base-font-family
+                font-weight: normal
+                font-size: 3em
 
-        #catchphrase
-            display: inline-block
-            margin: auto
-
-
-        .post-list
-            margin: auto -10px
-            margin-top: $vertical-space
-            text-align: left
+            .page-category
+                font-size: 1.5em
 
         .post
-            display: inline-block
-            width: calc(100% - 50px)
-            max-width: $content-width / 2 - 50px
-            margin: 10px 8px
-            padding: 20px
-            vertical-align: middle
-            background-color: $content-background
-            border: $border
-            border-radius: $border-radius
+            display: block
+            margin: $spacing auto
+            padding: $spacing
 
-            .post-wrapper
-                display: block
-                position: relative
-                color: $base-color
-
-                .post-logo
-                    float: left
-                    width: $post-icon-size
-                    height: $post-icon-size
-                    margin-right: 20px
-                    border-radius: 50%
-                    overflow: hidden
-
-                    img
-                        width: 100%
-
-                .post-title
-                    height: 3 * $post-icon-size / 4
-                    font-size: 24px
-                    line-height: $post-icon-size / 4
-                    font-weight: bold
-                    overflow: hidden
-                    vertical-align: middle
-
-                    span
-                        line-height: 3 * $post-icon-size / 4
-
-                    div
-                        display: inline-block
-                        vertical-align: middle
-
-            .post-wrapper:hover
-                color: $link-color
-                text-decoration: none
-
-            .post-category
-                float: right
-                line-height: $post-icon-size / 4
-                margin-left: 20px
-
-        .post:hover
-            .post-title
-                height: auto
-
-        #about
-            min-height: $post-icon-size + 40px
-
-            .about-picture
-                float: left
-                margin: 20px 20px 20px 0
-                width: $post-icon-size
-                height: $post-icon-size
+            .post-logo
+                display: inline-block
+                width: $post-logo-width
+                height: $post-logo-width
+                line-height: $post-logo-width
                 border-radius: 50%
                 overflow: hidden
+                background-color: transparentize($header-color, 0.9)
 
                 img
                     width: 100%
+                    min-height: 100%
 
-    // Site footer
 
-    footer
-        margin-top: 20px
+            .post-title
+                font-size: 1.5em
 
-        .footer-right
-            text-align: center
-            margin: $vertical-space 0
+            time
+                display: inline-block
+                vertical-align: middle
+                margin: 0 $spacing/2
 
-            .network-link
-                vertical-align: top
-                text-decoration: none
-
-                .network-icon
-                    width: $post-icon-size / 4 + 20px
-                    line-height: $post-icon-size / 4 + 40px
-                    padding: 10px
-
-                .network-icon:hover
-                    background-color: rgba(255, 255, 255, 0.1)
-                    color: $header-color
-
-        .footer-left
-            text-align: center
-            margin-bottom: 20px
+            .post-category
+                display: inline-block
+                vertical-align: middle
+                margin: 0 $spacing/2
