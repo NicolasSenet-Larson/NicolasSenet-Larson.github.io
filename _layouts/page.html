@@ -30,7 +30,7 @@ layout: default
     </header>
 
     <!-- Content -->
-    {% unless page.content == '' %}
+    {% unless page.content == '' or post.content == '' %}
         <div class="page-content">
             {{ content }}
         </div>

@@ -16,26 +16,17 @@ $post-logo-width: 120px
 $spacing: 20px
 $border-radius: 4px
 
-$grey-light: darkgrey
-$grey: #393F3F
-$grey-dark: #2E3436
-$gold: #D4AF37
-$black: #1a1a1a
-$blue: #24425C
-
 $base-font-family: Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif !default
 $base-color: #3D3D3D
-$header-color: #2D2D2D
-$link-color: steelblue
-$background-color: white
+$header-color: #272822
+$link-color: #386890
+$background-color: #F8F8F8
 
-$site-background: #2E3436 url(noise-texture.png) center fixed
+$site-background: #2E3436 url(noise-texture.png) center
 $site-background-size: auto
 
 $box-shadow: 0 0 0 1px rgba(0,0,0,0.2), inset 0 -#{$border-radius} rgba(0,0,0,0.2)
 $active-box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2), inset 0 #{$border-radius} rgba(0,0,0,0.2)
-$text-shadow: 1px 1px rgba(0,0,0,0.1)
-$title-shadow: 0 0 1px rgba(0,0,0,1)
 
 // Mixins
 
@@ -58,7 +49,7 @@ a
     text-decoration: none
     font-weight: bold
 
-a:hover, a:focus
+a:hover, a:active, a:focus
     text-decoration: underline
     outline: none
 
@@ -71,11 +62,11 @@ a:hover, a:focus
 
 .button:hover, .button:active, .button:focus
     color: $header-color
-    background-color: darken($background-color, 25)
+    background-color: darken($background-color, 20)
     text-decoration: none
 
 .button:active
-    background-color: darken($background-color, 50)
+    background-color: darken($background-color, 30)
     box-shadow: $active-box-shadow
 
 // Background
@@ -118,10 +109,9 @@ body
 
             .menu-icon
                 display: inline-block
-                min-width: $header-logo-width/2
-                height: $header-logo-width/2
-                line-height: $header-logo-width/2
-                padding: $spacing/2
+                width: 15px
+                height: 18px
+                padding: $spacing/2 + $header-logo-width/2 - 9px $spacing/2
 
                 svg path
                     fill: $background-color
@@ -174,9 +164,15 @@ body
                     float: none
                     width: 100%
 
+    +media-query($on-palm)
+        .site-header
+            position: absolute
+            right: -$spacing/2
+            left: -$spacing/2
+
     // Site footer
 
-    footer
+    .site-footer
         position: absolute
         bottom: 0
         left: 0
@@ -215,7 +211,7 @@ body
                 line-height: $page-logo-width
                 overflow: hidden
                 border-radius: 50%
-                background-color: transparentize($header-color, 0.9)
+                background-color: transparentize($background-color, 0.9)
 
                 img
                     width: 100%
@@ -225,6 +221,7 @@ body
                 .page-logo
                     max-width: $page-logo-width*2/3
                     max-height: $page-logo-width*2/3
+                    line-height: $page-logo-width*2/3
 
         // Page content
 
@@ -241,23 +238,15 @@ body
                 color: $header-color
 
             h1, h2
-                border-bottom: 1px solid $header-color
+                border-bottom: 1px solid grey
                 padding-bottom: $spacing/2
 
-            strong em
-                display: block
-                text-align: center
-
             img
-
+                border-radius: $border-radius
+                max-width: 100%
 
             // Syntax highlighting styles for code snippets
             @import "_syntax-highlighting"
-
-    +media-query($on-palm)
-        .page
-            padding-top: $header-logo-width/2 + $spacing + $border-radius + $spacing
-            padding-bottom: $header-logo-width/2 + $spacing + $border-radius
 
     // Home page
 

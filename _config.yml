@@ -43,11 +43,11 @@ social:
 # Footer note
 notice: Copyright © 2017 <a href="https://NicolasSenet-Larson.github.io">Nicolas Senet-Larson</a>.
     Powered by <a href="https://jekyllrb.com/">Jekyll</a>.
-    Icons by <a href="https://numixproject.org/">Numix</a>.
+    Icons theme by <a href="https://numixproject.org/">Numix</a>.
 
 # Build settings
 markdown: kramdown
-permalink: /:categories/:title/
+permalink: /blog/:title/
 gems:
   - jekyll-feed
 exclude:
