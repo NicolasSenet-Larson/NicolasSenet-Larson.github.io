@@ -9,7 +9,7 @@
 // Variables
 
 $content-width: 1200px !default
-$on-palm: 760px !default
+$on-palm: 600px !default
 $page-logo-width: 360px
 $header-logo-width: 36px
 $post-logo-width: 120px
@@ -202,10 +202,6 @@ body
                 font-size: 2em
                 margin: $spacing 0
 
-            +media-query($on-palm)
-                .page-title
-                    font-size: 1.5em
-
             time, .page-category
                 display: inline-block
                 vertical-align: middle
@@ -258,6 +254,11 @@ body
             // Syntax highlighting styles for code snippets
             @import "_syntax-highlighting"
 
+    +media-query($on-palm)
+        .page
+            padding-top: $header-logo-width/2 + $spacing + $border-radius + $spacing
+            padding-bottom: $header-logo-width/2 + $spacing + $border-radius
+
     // Home page
 
     #home
@@ -272,7 +273,7 @@ body
 
             +media-query($on-palm)
                 .page-title
-                    font-size: 1.5em
+                    font-size: 2em
 
                 .page-category
                     font-size: 1em
@@ -298,10 +299,6 @@ body
 
             .post-title
                 font-size: 1.5em
-
-            +media-query($on-palm)
-                .post-title
-                    font-size: 1.25em
 
             time
                 display: inline-block
