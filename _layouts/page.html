@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<article class="page" id="{{ page.id }}">
+<article class="page" id="{{ page.title | downcase | replace:" ","-" }}">
     <header class="page-header">
         <!-- Title -->
         <div class="page-title">

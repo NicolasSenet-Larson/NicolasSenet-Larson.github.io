@@ -18,11 +18,11 @@
             <div class="trigger">
                 <!-- Navigation -->
                 <div class="page-links">
-                    <a class="page-link" href="{{ site.baseurl | append: "/" }}">Home</a>
+                    <a class="page-link" href="{{ site.baseurl | append: "/" }}" {% if page.url == "/" %}style="text-decoration: underline"{% endif %}>Home</a>
                     {% for path in page_paths %}
                         {% assign my_page = site.pages | where: "path", path | first %}
                         {% if my_page.title %}
-                            <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title }}</a>
+                            <a class="page-link" href="{{ my_page.url | relative_url }}" {% if my_page.title == page.title %}style="text-decoration: underline"{% endif %}>{{ my_page.title }}</a>
                         {% endif %}
                     {% endfor %}
                 </div>
