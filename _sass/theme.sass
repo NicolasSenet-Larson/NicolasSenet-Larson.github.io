@@ -78,7 +78,11 @@ html
     color: $base-color
     background: $site-background
     background-size: $site-background-size
-    padding: 0 $spacing/2
+    padding: 0 $spacing
+
++media-query($on-palm)
+    html
+        padding: 0 $spacing/2
 
 body
     width: 100%
@@ -195,7 +199,7 @@ body
             color: $background-color
 
             .page-title
-                font-size: 2em
+                font-size: 1.9em
                 margin: $spacing 0
 
             time, .page-category
@@ -255,14 +259,14 @@ body
             .page-title
                 font-family: 'Knights Quest Shielded', $base-font-family
                 font-weight: normal
-                font-size: 3em
+                font-size: 2.8em
 
             .page-category
                 font-size: 1.5em
 
             +media-query($on-palm)
                 .page-title
-                    font-size: 2em
+                    font-size: 1.9em
 
                 .page-category
                     font-size: 1em
