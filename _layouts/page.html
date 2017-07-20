@@ -22,11 +22,11 @@ layout: default
         {% endfor %}
 
         <!-- Logo -->
-        {% if page.logo %}
-            <div class="page-logo">
+        <div class="page-logo">
+            {% if page.logo %}
                 <img src="{{ page.logo | prepend:"/assets/" | relative_url }}" alt="The page logo">
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
     </header>
 
     <!-- Content -->

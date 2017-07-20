@@ -2,12 +2,12 @@
 title: Nicolas Senet-Larson
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://NicolasSenet-Larson.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-favicon: arngrim-favicon.svg
+favicon: arngrim-favicon.png
 description: >
     Developer - Engineer - Designer
 
 # Date
-date_format: "%B %Y"
+date_format: "%Y"
 
 # Homepage
 logo: arngrim-circle.svg
@@ -38,7 +38,7 @@ social:
     -
         title:  Deviantart
         icon:   deviantart.svg
-        url:
+        url:    https://dinodig2010.deviantart.com
 
 # Footer note
 notice: Copyright © 2017 <a href="https://NicolasSenet-Larson.github.io">Nicolas Senet-Larson</a>.
@@ -47,7 +47,7 @@ notice: Copyright © 2017 <a href="https://NicolasSenet-Larson.github.io">Nicola
 
 # Build settings
 markdown: kramdown
-permalink: /blog/:title/
+permalink: /:year/:title/
 gems:
   - jekyll-feed
 exclude:
