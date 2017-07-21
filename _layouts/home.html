@@ -15,7 +15,7 @@ layout: default
         <!-- Logo -->
         {% if site.logo or page.logo %}
             <div class="page-logo">
-                <img src="{{ page.logo | default: site.logo | prepend:"/assets/" | relative_url }}" alt="The website logo">
+                <img src="{{ page.logo | default: site.logo | prepend:"/assets/" | relative_url }}" alt="Website logo">
             </div>
         {% endif %}
     </header>
@@ -50,19 +50,6 @@ layout: default
                 </div>
             </a>
         {% endfor %}
-    {% endif %}
-
-    <!-- About -->
-    {% if site.about %}
-        <div class="page-content" id="about">
-            {% if site.about.picture %}
-                <div class="about-picture">
-                    <img src="{{ site.about.picture | prepend:"/assets/" | relative_url }}" alt="Picture for the about section">
-                </div>
-            {% endif %}
-            <h2 style="border: none;">About</h2>
-            <p>{{ site.about.content }}</p>
-        </div>
     {% endif %}
 
 </article>

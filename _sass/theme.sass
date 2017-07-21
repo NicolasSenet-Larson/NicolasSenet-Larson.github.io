@@ -9,11 +9,11 @@
 // Variables
 
 $content-width: 1200px !default
-$on-palm: 660px !default
+$on-palm: 720px !default
 $page-logo-width: 360px
 $header-logo-width: 36px
 $post-logo-width: 120px
-$spacing: 20px
+$spacing: 10px
 $border-radius: 4px
 
 $base-font-family: Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif !default
@@ -48,7 +48,7 @@ $site-background-size: auto
 
 // Common elements
 
-a
+a, label[for="nav-trigger"]
     display: inline-block
     text-decoration: none
     color: $link-color
@@ -71,7 +71,7 @@ html
     background: $site-background
     background-color: $site-background-color
     background-size: $site-background-size
-    padding: 0 $spacing/2
+    padding: 0 $spacing
 
 body
     width: 100%
@@ -85,13 +85,13 @@ body
     .site-header
         position: fixed
         top: 0
-        left: $spacing/2 - $border-radius
-        right: $spacing/2 - $border-radius
+        left: $spacing
+        right: $spacing
         z-index: 10
         max-width: $content-width
         margin: auto
-        padding: $border-radius
-        padding-bottom: $border-radius*2
+        padding: $border-radius/2 $border-radius
+        padding-bottom: $border-radius*1.5
         background-color: $site-background-color
         +box-shadow($border-radius)
         border-bottom-left-radius: $border-radius
@@ -101,51 +101,43 @@ body
             .nav-trigger
                 display: none
 
-            label[for="nav-trigger"]
-                display: none
-                cursor: pointer
-                border-radius: $border-radius
-
-            .menu-icon
-                display: inline-block
-                width: 15px
-                height: 18px
-                padding-top: $spacing/2 + $border-radius/2
-                padding-bottom: $spacing/2 - $border-radius/2
-
-                svg path
-                    fill: $background-color
-
             input ~ .trigger
-                clear: both
-                display: block
+                overflow: hidden
+                height: $header-logo-width + $spacing*2 + $border-radius
 
             input:checked ~ .trigger
-                display: block
+                height: auto
 
-            .page-links
-                float: left
-                text-align: left
-                width: 50%
-
-            .socials
-                float: right
-                text-align: right
-                width: 50%
-
-            .page-link, .social
+            .page-link, .social, label[for="nav-trigger"]
                 display: inline-block
                 vertical-align: middle
                 min-width: $header-logo-width
                 height: $header-logo-width
                 line-height: $header-logo-width
-                padding: $spacing/2
+                padding: $spacing
+                margin: $border-radius/2 calc(#{$border-radius/2} - 2px)
                 color: $background-color
                 border-radius: $border-radius
                 background-color: $site-background-color
 
+            label[for="nav-trigger"]
+                float: right
+                cursor: pointer
+                text-align: center
+                margin-left: $border-radius
+
+                .menu-icon
+                    display: inline-block
+                    width: 18px
+                    height: 15px
+                    position: relative
+                    top: 3px
+
+                    svg path
+                        fill: $background-color
+
             .page-link
-                min-width: $header-logo-width*2 + $border-radius + $spacing
+                min-width: $header-logo-width*2 + $spacing*2 + $border-radius
                 text-align: center
                 font-weight: bold
 
@@ -156,30 +148,11 @@ body
 
             .page-link:hover, .page-link:active, .page-link:focus,
             .social:hover, .social:active, .social:focus,
-            label:hover, label:active, label:focus
+            input:checked ~ .trigger label[for="nav-trigger"]
                 background-color: $shadow
                 text-decoration: none
                 +active-box-shadow($border-radius)
                 background-color: scale-color($site-background-color, $lightness: -20%)
-
-    +media-query($on-palm)
-        .site-header
-            .site-nav
-                label[for="nav-trigger"]
-                    display: block
-
-                input ~ .trigger
-                    clear: both
-                    display: none
-
-                input:checked ~ .trigger
-                    display: block
-
-                .page-links, .socials
-                    float: none
-                    width: 100%
-                    text-align: inherit
-                    padding-top: $border-radius
 
     // Site footer
 
@@ -188,24 +161,21 @@ body
         bottom: 0
         left: 0
         right: 0
-        padding: $spacing/2
-        height: $header-logo-width + $spacing
-        font-weight: bold
+        padding: $spacing
         color: $background-color
-        text-shadow: 0 0 1em rgba($shadow, 1)
+        background-color: $site-background-color
+        +box-shadow(0)
+        border-top-left-radius: $border-radius
+        border-top-right-radius: $border-radius
 
-        a
-            background-color: $site-background-color
-            text-shadow: none
-
-        a:hover, a:active, a:focus
-            background-color: scale-color($site-background-color, $lightness: -20%)
+        span
+            display: inline-block
 
     // Page
 
     .page
-        padding-top: $header-logo-width + $spacing*2 + $border-radius*3
-        padding-bottom: $header-logo-width + $spacing*2
+        padding: $header-logo-width + $spacing*4 + $border-radius*3 0
+        animation: display 0.5s linear
 
         // Page header
 
@@ -216,15 +186,15 @@ body
 
             .page-title
                 font-size: 2em
-                margin: $spacing 0
+                margin: $spacing*2 0
 
             time, .page-category
                 display: inline-block
                 vertical-align: middle
-                margin: 0 $spacing/2
+                margin: 0 $spacing
 
             .page-logo
-                margin: $spacing*2 auto
+                margin: $spacing*4 auto
                 width: 100%
                 max-width: $page-logo-width
                 height: $page-logo-width
@@ -247,16 +217,15 @@ body
 
         .page-content
             text-align: left
-            margin: $spacing*2 0
-            padding: $spacing
+            margin: $spacing*4 0
+            padding: $spacing*2
             +box-shadow($border-radius)
             background-color: $background-color
             border-radius: $border-radius
-            animation: display 0.5s linear
 
             h1, h2
                 border-bottom: 1px solid $shadow
-                padding-bottom: $spacing/2
+                padding-bottom: $spacing
 
             img
                 border-radius: $border-radius
@@ -301,20 +270,18 @@ body
             display: block
             margin: $spacing auto
             padding: $spacing
-            padding-bottom: $spacing/2
             color: $background-color
             font-weight: bold
             background-color: $site-background-color
             border-radius: $border-radius
             +active-box-shadow(0)
-            animation: display 0.5s linear
 
             .post-logo
                 display: inline-block
                 width: $post-logo-width
                 height: $post-logo-width
                 line-height: $post-logo-width
-                margin-top: $spacing/2
+                margin-top: $spacing
                 border-radius: 50%
                 overflow: hidden
                 background-color: $shadow
@@ -329,12 +296,12 @@ body
             time
                 display: inline-block
                 vertical-align: middle
-                margin: 0 $spacing/2
+                margin: 0 $spacing
 
             .post-category
                 display: inline-block
                 vertical-align: middle
-                margin: 0 $spacing/2
+                margin: 0 $spacing
 
         .post:hover, .post:active, .post:focus
             +active-box-shadow($border-radius)
