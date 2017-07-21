@@ -9,14 +9,15 @@
 // Variables
 
 $content-width: 1200px !default
-$on-palm: 720px !default
-$page-logo-width: 360px
-$header-logo-width: 36px
-$post-logo-width: 120px
-$spacing: 10px
-$border-radius: 4px
+$on-palm: 640px !default
+$page-logo-width: 320px !default
+$header-logo-width: 32px !default
+$post-logo-width: 160px !default
+$spacing: 10px !default
+$border-radius: 4px !default
 
 $base-font-family: Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif !default
+$base-font-size: 0.9em
 $base-color: #3D3D3D
 $link-color: #3870C6
 $background-color: #F8F8F8
@@ -65,6 +66,7 @@ a:hover, a:active, a:focus
 
 html
     font-family: $base-font-family
+    font-size: $base-font-size
     height: 100%
     text-align: center
     color: $base-color
@@ -103,7 +105,7 @@ body
 
             input ~ .trigger
                 overflow: hidden
-                height: $header-logo-width + $spacing*2 + $border-radius
+                height: $header-logo-width + $border-radius*4
 
             input:checked ~ .trigger
                 height: auto
@@ -114,7 +116,7 @@ body
                 min-width: $header-logo-width
                 height: $header-logo-width
                 line-height: $header-logo-width
-                padding: $spacing
+                padding: $border-radius*1.5
                 margin: $border-radius/2 calc(#{$border-radius/2} - 2px)
                 color: $background-color
                 border-radius: $border-radius
@@ -137,9 +139,8 @@ body
                         fill: $background-color
 
             .page-link
-                min-width: $header-logo-width*2 + $spacing*2 + $border-radius
+                min-width: $header-logo-width*2 + $border-radius*4
                 text-align: center
-                font-weight: bold
 
             #current-page-link
                 background-color: $shadow
@@ -174,13 +175,12 @@ body
     // Page
 
     .page
-        padding: $header-logo-width + $spacing*4 + $border-radius*3 0
+        padding: $header-logo-width + $spacing*2 + $border-radius*5 0
         animation: display 0.5s linear
 
         // Page header
 
         .page-header
-            font-weight: bold
             color: $background-color
             text-shadow: 0 0 1em rgba($shadow, 1)
 
@@ -189,6 +189,7 @@ body
                 margin: $spacing*2 0
 
             time, .page-category
+                font-weight: bold
                 display: inline-block
                 vertical-align: middle
                 margin: 0 $spacing
@@ -209,9 +210,9 @@ body
 
             +media-query($on-palm)
                 .page-logo
-                    max-width: $page-logo-width*2/3
-                    max-height: $page-logo-width*2/3
-                    line-height: $page-logo-width*2/3
+                    max-width: $page-logo-width/2
+                    max-height: $page-logo-width/2
+                    line-height: $page-logo-width/2
 
         // Page content
 
@@ -245,33 +246,16 @@ body
 
             .page-title
                 font-family: 'Knights Quest Shielded', $base-font-family
-                font-weight: normal
                 font-size: 3em
 
             .page-category
                 font-size: 1.5em
-
-        +media-query($on-palm)
-            .page-header
-                background: url(monitor-frame.svg) calc(50% - #{$page-logo-width/3}) 100% no-repeat, url(g4quicksilver-frame.svg) calc(50% + #{$page-logo-width/3}) 100% no-repeat
-                background-size: $page-logo-width/3*2
-
-                .page-title
-                    font-size: 7vw
-
-                .page-category
-                    font-size: 1em
-
-        +media-query($page-logo-width/3*4)
-            .page-header
-                background: none
 
         .post
             display: block
             margin: $spacing auto
             padding: $spacing
             color: $background-color
-            font-weight: bold
             background-color: $site-background-color
             border-radius: $border-radius
             +active-box-shadow(0)
@@ -293,12 +277,8 @@ body
             .post-title
                 font-size: 1.5em
 
-            time
-                display: inline-block
-                vertical-align: middle
-                margin: 0 $spacing
-
-            .post-category
+            time, .post-category
+                font-weight: bold
                 display: inline-block
                 vertical-align: middle
                 margin: 0 $spacing
@@ -306,3 +286,24 @@ body
         .post:hover, .post:active, .post:focus
             +active-box-shadow($border-radius)
             background-color: scale-color($site-background-color, $lightness: -20%)
+
+        +media-query($on-palm)
+            .page-header
+                background: url(monitor-frame.svg) calc(50% - #{$page-logo-width/4}) 100% no-repeat, url(g4quicksilver-frame.svg) calc(50% + #{$page-logo-width/4}) 100% no-repeat
+                background-size: $page-logo-width/2
+
+                .page-title
+                    font-size: 6vw
+
+                .page-category
+                    font-size: 1em
+
+            .post
+                .post-logo
+                    width: $post-logo-width/2
+                    height: $post-logo-width/2
+                    line-height: $post-logo-width/2
+
+        +media-query($page-logo-width)
+            .page-header
+                background: none
