@@ -21,6 +21,7 @@ $base-font-size: 0.9em
 $base-color: #3D3D3D
 $link-color: #3870C6
 $background-color: #F8F8F8
+$header-color: #373832
 $shadow: rgba(0,0,0,0.2)
 
 $site-background: url(noise-texture.png) center
@@ -94,7 +95,7 @@ body
         margin: auto
         padding: $border-radius/2 $border-radius
         padding-bottom: $border-radius*1.5
-        background-color: $site-background-color
+        background-color: $header-color
         +box-shadow($border-radius)
         border-bottom-left-radius: $border-radius
         border-bottom-right-radius: $border-radius
@@ -120,7 +121,7 @@ body
                 margin: $border-radius/2 calc(#{$border-radius/2} - 2px)
                 color: $background-color
                 border-radius: $border-radius
-                background-color: $site-background-color
+                background-color: $header-color
 
             label[for="nav-trigger"]
                 float: right
@@ -137,7 +138,7 @@ body
             #current-page-link
                 background-color: $shadow
                 +active-box-shadow($border-radius)
-                background-color: scale-color($site-background-color, $lightness: -20%)
+                background-color: $shadow
 
             .page-link:hover, .page-link:active, .page-link:focus,
             .social:hover, .social:active, .social:focus,
@@ -145,19 +146,17 @@ body
                 background-color: $shadow
                 text-decoration: none
                 +active-box-shadow($border-radius)
-                background-color: scale-color($site-background-color, $lightness: -20%)
+                background-color: $shadow
 
     // Site footer
 
     .site-footer
-        position: absolute
-        bottom: 0
-        left: 0
-        right: 0
         padding: $spacing
+        padding-bottom: $spacing + $border-radius
+        margin-bottom: $spacing
         color: $background-color
-        background-color: $site-background-color
-        +box-shadow(0)
+        background-color: $header-color
+        +box-shadow($border-radius)
         border-top-left-radius: $border-radius
         border-top-right-radius: $border-radius
 
@@ -167,7 +166,7 @@ body
     // Page
 
     .page
-        padding: $header-logo-width + $spacing*2 + $border-radius*5 0
+        padding-top: $header-logo-width + $border-radius*6 + $spacing*2
         animation: display 0.5s linear
 
         // Page header
@@ -210,7 +209,7 @@ body
 
         .page-content
             text-align: left
-            margin: $spacing*4 0
+            margin: $spacing auto
             padding: $spacing*2
             +box-shadow($border-radius)
             background-color: $background-color
@@ -248,9 +247,9 @@ body
             margin: $spacing auto
             padding: $spacing
             color: $background-color
-            background-color: $site-background-color
+            background-color: $header-color
             border-radius: $border-radius
-            +active-box-shadow(0)
+            +box-shadow($border-radius)
 
             .post-logo
                 display: inline-block
@@ -277,7 +276,7 @@ body
 
         .post:hover, .post:active, .post:focus
             +active-box-shadow($border-radius)
-            background-color: scale-color($site-background-color, $lightness: -20%)
+            background-color: scale-color($header-color, $lightness: -20%)
 
         +media-query($on-palm)
             .page-header
