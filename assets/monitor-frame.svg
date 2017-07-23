@@ -74,16 +74,16 @@
        x="7.1999998"
        y="13.5" />
     <text
-       transform="matrix(0.95197115,0,0,1.050452,0,-1074.5196)"
+       transform="scale(0.95197115,1.050452)"
        id="text5801"
-       y="1049.9513"
-       x="16.175165"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.33259583px;line-height:26.87362099px;font-family:Cantarell;-inkscape-font-specification:Cantarell;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.07494485;opacity:0.2;"
+       y="21.895336"
+       x="9.9818535"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.33259583px;line-height:26.87362099px;font-family:Cantarell;-inkscape-font-specification:Cantarell;letter-spacing:0px;word-spacing:0px;opacity:0.2;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.07494485"
        xml:space="preserve"><tspan
-         style="font-size:12.89933777px;fill:#000000;stroke-width:1.07494485;"
-         y="1049.9513"
-         x="16.175165"
+         style="font-size:10.66666698px;fill:#000000;stroke-width:1.07494485"
+         y="21.895336"
+         x="9.9818535"
          id="tspan5799"
-         sodipodi:role="line">&lt;/&gt;</tspan></text>
+         sodipodi:role="line">&gt;_</tspan></text>
   </g>
 </svg>
