@@ -24,6 +24,13 @@ layout: default
     {% if site.posts %}
         {% for post in site.posts %}
             <a class="post" href="{{ post.url | relative_url }}">
+                <!-- Post logo -->
+                <div class="post-logo">
+                    {% if post.logo %}
+                        <img src="{{ post.logo | prepend:"/assets/" | relative_url }}" alt="Post logo">
+                    {% endif %}
+                </div>
+
                 <div class="wrap">
                     <!-- Post title -->
                     <div class="post-title">{{ post.title }}</div>
@@ -40,13 +47,6 @@ layout: default
                     {% for category in post.categories %}
                         <div class="post-category">{{ category }}</div>
                     {% endfor %}
-                </div>
-
-                <!-- Post logo -->
-                <div class="post-logo">
-                    {% if post.logo %}
-                        <img src="{{ post.logo | prepend:"/assets/" | relative_url }}" alt="Post logo">
-                    {% endif %}
                 </div>
             </a>
         {% endfor %}

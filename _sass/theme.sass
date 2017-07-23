@@ -8,7 +8,7 @@
 
 // Variables
 
-$content-width: 1200px !default
+$content-width: 1000px !default
 $on-palm: 640px !default
 $page-logo-width: 320px !default
 $header-logo-width: 32px !default
@@ -180,10 +180,12 @@ body
                 margin: $spacing*2 0
 
             time, .page-category
+                font-size: 1.2em
                 font-weight: bold
                 display: inline-block
                 vertical-align: middle
                 margin: 0 $spacing
+                opacity: 0.5
 
             .page-logo
                 margin: $spacing*4 auto
@@ -200,6 +202,12 @@ body
                     min-height: 100%
 
             +media-query($on-palm)
+                .page-title
+                    font-size: 1.5em
+
+                time, .page-category
+                    font-size: 1em
+
                 .page-logo
                     max-width: $page-logo-width/2
                     max-height: $page-logo-width/2
@@ -228,6 +236,10 @@ body
             // Syntax highlighting styles for code snippets
             @import "_syntax-highlighting"
 
+        +media-query($on-palm)
+            .page-content
+                padding: $spacing
+
     // Home page
 
     #home
@@ -253,30 +265,39 @@ body
 
             .post-logo
                 display: inline-block
+                vertical-align: middle
                 width: $post-logo-width
                 height: $post-logo-width
                 line-height: $post-logo-width
-                margin-top: $spacing
                 border-radius: 50%
                 overflow: hidden
                 background-color: $shadow
+                margin: 0 $spacing
 
                 img
                     width: 100%
                     min-height: 100%
 
-            .post-title
-                font-size: 1.5em
-
-            time, .post-category
-                font-weight: bold
+            .wrap
                 display: inline-block
                 vertical-align: middle
+                width: calc(100% - #{$post-logo-width} - #{$spacing*4} - 4px)
+                text-align: left
                 margin: 0 $spacing
+
+                .post-title
+                    font-size: 1.5em
+
+                time, .post-category
+                    display: inline-block
+                    vertical-align: middle
+                    margin-right: $spacing
+                    font-weight: bold
+                    opacity: 0.5
 
         .post:hover, .post:active, .post:focus
             +active-box-shadow($border-radius)
-            background-color: scale-color($header-color, $lightness: -20%)
+            background-color: scale-color($site-background-color, $lightness: -20%)
 
         +media-query($on-palm)
             .page-header
@@ -284,16 +305,25 @@ body
                 background-size: $page-logo-width/2
 
                 .page-title
-                    font-size: 6vw
+                    font-size: 7vw
 
                 .page-category
                     font-size: 1em
 
             .post
+                .wrap
+                    width: calc(100% - #{$post-logo-width/2} - #{$spacing} - 4px)
+                    margin-right: 0
+
+                    .post-title
+                        font-size: 1em
+                        font-weight: bold
+
                 .post-logo
                     width: $post-logo-width/2
                     height: $post-logo-width/2
                     line-height: $post-logo-width/2
+                    margin: 0
 
         +media-query($page-logo-width)
             .page-header
