@@ -31,7 +31,7 @@ $site-background-size: auto
 // Mixins
 
 @mixin media-query($device)
-    @media screen and (max-width: $device)
+    @media all and (max-width: $device)
         @content
 
 @mixin box-shadow($height)
@@ -79,9 +79,7 @@ html
 body
     width: 100%
     max-width: $content-width
-    min-height: 100%
     margin: auto
-    position: relative
 
     // Site header
 
@@ -147,6 +145,10 @@ body
                 text-decoration: none
                 +active-box-shadow($border-radius)
                 background-color: $shadow
+
+    @media print
+        .site-header
+            display: none
 
     // Site footer
 
@@ -238,6 +240,10 @@ body
         +media-query($on-palm)
             .page-content
                 padding: $spacing
+
+    @media print
+        .page
+            padding-top: 0
 
     // Home page
 
