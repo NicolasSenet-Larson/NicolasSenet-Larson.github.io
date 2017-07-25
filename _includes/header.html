@@ -18,13 +18,15 @@
                 {% endfor %}
 
                 <!-- Social -->
-                {% for network in site.social %}
-                    {% if network.url and (network.icon or network.title) %}
-                        <a class="social" href="{{ network.url }}" title="{{ network.title }}">
-                            <img src="{{ network.icon | prepend:"/assets/" | relative_url }}" alt="{{ network.title }}">
-                        </a>
-                    {% endif  %}
-                {% endfor %}
+                <div class="socials">
+                    {% for network in site.social %}
+                        {% if network.url and (network.icon or network.title) %}
+                            <a class="social" href="{{ network.url }}" title="{{ network.title }}">
+                                <img src="{{ network.icon | prepend:"/assets/" | relative_url }}" alt="{{ network.title }}">
+                            </a>
+                        {% endif  %}
+                    {% endfor %}
+                </div>
             </div>
         </nav>
     {% endif %}

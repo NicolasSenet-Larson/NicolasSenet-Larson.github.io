@@ -103,8 +103,9 @@ body
                 display: none
 
             input ~ .trigger
+                text-align: left
                 overflow: hidden
-                height: $header-logo-width + $border-radius*4
+                height: $header-logo-width + $border-radius*3
 
             input:checked ~ .trigger
                 height: auto
@@ -115,11 +116,10 @@ body
                 min-width: $header-logo-width
                 height: $header-logo-width
                 line-height: $header-logo-width
-                padding: $border-radius*1.5
+                padding: $border-radius
                 margin: $border-radius/2 calc(#{$border-radius/2} - 2px)
                 color: $background-color
                 border-radius: $border-radius
-                background-color: $header-color
 
             label[for="nav-trigger"]
                 float: right
@@ -130,18 +130,23 @@ body
                 background-size: $header-logo-width
 
             .page-link
-                min-width: $header-logo-width*2 + $border-radius*4
+                min-width: $header-logo-width*2 + $border-radius*3
                 text-align: center
 
+            .social
+                box-shadow: none
+
+            .socials
+                display: inline-block
+                float: right
+
             #current-page-link
-                background-color: $shadow
                 +active-box-shadow($border-radius)
                 background-color: $shadow
 
             .page-link:hover, .page-link:active, .page-link:focus,
             .social:hover, .social:active, .social:focus,
             input:checked ~ .trigger label[for="nav-trigger"]
-                background-color: $shadow
                 text-decoration: none
                 +active-box-shadow($border-radius)
                 background-color: $shadow
@@ -167,7 +172,7 @@ body
     // Page
 
     .page
-        padding-top: $header-logo-width + $border-radius*6 + $spacing*2
+        padding-top: $header-logo-width + $border-radius*5 + $spacing*2
         animation: display 0.5s linear
 
         // Page header
