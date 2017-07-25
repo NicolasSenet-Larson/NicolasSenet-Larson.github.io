@@ -91,8 +91,7 @@ body
         z-index: 10
         max-width: $content-width
         margin: auto
-        padding: $border-radius/2 $border-radius
-        padding-bottom: $border-radius*1.5
+        padding: 2px 4px 6px 4px
         background-color: $header-color
         +box-shadow($border-radius)
         border-bottom-left-radius: $border-radius
@@ -105,44 +104,50 @@ body
             input ~ .trigger
                 text-align: left
                 overflow: hidden
-                height: $header-logo-width + $border-radius*3
+                height: $header-logo-width + 12px
+
+                .page-link, .social, label[for="nav-trigger"]
+                    display: inline-block
+                    vertical-align: middle
+                    min-width: $header-logo-width
+                    height: $header-logo-width
+                    line-height: $header-logo-width
+                    padding: 4px
+                    margin: 2px 0
+                    color: $background-color
+                    border-radius: $border-radius
+                    text-align: center
+
+                label[for="nav-trigger"]
+                    float: right
+                    cursor: pointer
+                    margin-left: 4px
+                    background: url(menu.svg) center no-repeat
+                    background-size: $header-logo-width
+
+                .page-link
+                    min-width: $header-logo-width*2 + 12px
+
+                .current-page-link
+                    +active-box-shadow($border-radius)
+                    background-color: $shadow
+
+                .socials
+                    display: inline-block
+                    vertical-align: middle
+                    float: right
+                    margin-left: 2px
 
             input:checked ~ .trigger
                 height: auto
-
-            .page-link, .social, label[for="nav-trigger"]
-                display: inline-block
-                vertical-align: middle
-                min-width: $header-logo-width
-                height: $header-logo-width
-                line-height: $header-logo-width
-                padding: $border-radius
-                margin: $border-radius/2 calc(#{$border-radius/2} - 2px)
-                color: $background-color
-                border-radius: $border-radius
-
-            label[for="nav-trigger"]
-                float: right
-                cursor: pointer
-                text-align: center
-                margin-left: $border-radius
-                background: url(menu.svg) center no-repeat
-                background-size: $header-logo-width
-
-            .page-link
-                min-width: $header-logo-width*2 + $border-radius*3
                 text-align: center
 
-            .social
-                box-shadow: none
+                #home-link
+                    margin-left: $header-logo-width + 12px
 
-            .socials
-                display: inline-block
-                float: right
-
-            #current-page-link
-                +active-box-shadow($border-radius)
-                background-color: $shadow
+                .socials
+                    margin-left: 0
+                    width: 100%
 
             .page-link:hover, .page-link:active, .page-link:focus,
             .social:hover, .social:active, .social:focus,
@@ -172,7 +177,7 @@ body
     // Page
 
     .page
-        padding-top: $header-logo-width + $border-radius*5 + $spacing*2
+        padding-top: $header-logo-width + 20px + $spacing*2
         animation: display 0.5s linear
 
         // Page header

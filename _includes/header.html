@@ -9,11 +9,11 @@
                 <label class="menu-icon" for="nav-trigger"></label>
 
                 <!-- Navigation -->
-                <a class="page-link" href="{{ site.baseurl | append: "/" }}" {% if page.url == "/" %}id="current-page-link"{% endif %}>Home</a>
+                <a id="home-link" class="page-link {% if page.url == "/" %}current-page-link{% endif %}" href="{{ site.baseurl | append: "/" }}">Home</a>
                 {% for path in page_paths %}
                     {% assign my_page = site.pages | where: "path", path | first %}
                     {% if my_page.title %}
-                        <a class="page-link" href="{{ my_page.url | relative_url }}" {% if my_page.title == page.title %}id="current-page-link"{% endif %}>{{ my_page.title }}</a>
+                        <a class="page-link {% if my_page.title == page.title %}current-page-link{% endif %}" href="{{ my_page.url | relative_url }}">{{ my_page.title }}</a>
                     {% endif %}
                 {% endfor %}
 

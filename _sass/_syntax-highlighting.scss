@@ -15,6 +15,7 @@ code.highlighter-rouge {
     color: $base-color;
     background-color: rgba($shadow, 0.1);
     box-shadow: none;
+    white-space: nowrap;
 }
 
 a code.highlighter-rouge {
