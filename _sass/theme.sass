@@ -126,7 +126,7 @@ body
                     background-size: $header-logo-width
 
                 .page-link
-                    min-width: $header-logo-width*2 + 12px
+                    padding: 4px calc(4px + 1em)
 
                 .current-page-link
                     +active-box-shadow($border-radius)
@@ -141,6 +141,12 @@ body
             input:checked ~ .trigger
                 height: auto
                 text-align: center
+
+                .page-link, .social
+                    padding: $spacing
+
+                .page-link
+                    min-width: $header-logo-width*2 + 4px +$spacing*2
 
                 #home-link
                     margin-left: $header-logo-width + 12px
